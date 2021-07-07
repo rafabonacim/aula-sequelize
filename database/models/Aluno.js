@@ -1,6 +1,6 @@
 module.exports= (sequelize, Datatypes) => {
-    const alunos = sequelize.define(
-        "alunos",
+    const Aluno = sequelize.define(
+        "Aluno",
         {
             "id": {
                 primaryKey: true,
@@ -27,6 +27,6 @@ module.exports= (sequelize, Datatypes) => {
             //createdAt  e updatedAt
         }
     );
-    return alunos;
+    return Aluno;
 
 }
