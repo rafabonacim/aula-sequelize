@@ -3,7 +3,10 @@ const Op = Sequelize.Op;
 
 const alunoController = {
     index: async (req,res)=>{
-        const alunos = await Aluno.findAll();
+        //listando alunos com turmas relacionadas
+        const alunos = await Aluno.findAll({
+            include:['turmas']
+        });
         return res.json(alunos);
     },
     filtroAnoMatricula:async(req,res) => {

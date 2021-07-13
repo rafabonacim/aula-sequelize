@@ -20,6 +20,15 @@ module.exports= (sequelize, Datatypes) => {
             timestamps: true
         }
     );
+
+    Professor.associate = (models) =>{
+        //1:N UM PROFESSOR possui MUITAS TURMAS
+        Professor.hasMany(models.Turma, {
+            as: 'turmas',
+            foreignKey:'professor_id'
+
+        })
+    }
     
     return Professor
 }

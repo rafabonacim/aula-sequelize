@@ -3,7 +3,9 @@ const { Professor, Sequelize} = require('../database/models');
 
 const professorController = {
     index: async (req,res) => {
+        //listando professores com turmas relacionadas
         const professores = await Professor.findAll({
+            include: ['turmas'],
             order: [['nome', 'ASC']]
         });
 

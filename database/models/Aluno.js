@@ -27,6 +27,23 @@ module.exports= (sequelize, Datatypes) => {
             //createdAt  e updatedAt
         }
     );
-    return Aluno;
+   
 
+    Aluno.associate = (models) =>{
+        //muitos p muitos , N:M aluno pertencem a varias turmas
+        Aluno.belongsToMany(models.Turma, {
+            //apelido da relação
+            as: 'turmas',
+            //nome da tabela intermediaria
+            through: 'alunos_has_turmas',
+            //chave estrangeira desse model
+            foreignKey:'aluno_id',
+            //chave estrangeira do outro model
+            otherKey:'turma_id',
+            //adiciona createdAt e updatedAt
+            timestamps:true
+        });
+    }
+
+    return Aluno;
 }
