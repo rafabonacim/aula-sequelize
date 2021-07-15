@@ -3,6 +3,7 @@ var express = require('express');
 const alunoController = require('../controllers/alunoController');
 const areaController = require('../controllers/areaController');
 const cursoController = require('../controllers/cursoController');
+const indexController = require('../controllers/indexController');
 const professorController = require('../controllers/professorController');
 const turmaController = require('../controllers/turmaController');
 var router = express.Router();
@@ -30,5 +31,17 @@ router.get('/areas', areaController.index)
 router.get('/cursos', cursoController.index)
 
 router.get('/turmas', turmaController.index)
+
+router.get('/dashboard', indexController.index)
+
+router.get('/alunos/novo', indexController.novo);
+
+router.post('/alunos/novo', indexController.create);
+
+router.get('/alunos/:id', indexController.editarAluno)
+
+router.post('/alunos/:id', indexController.atualizarAluno)
+
+
 
 module.exports = router;

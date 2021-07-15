@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Escola</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <h1>Dashboard</h1>
+
+        <div class="alunos">
+            <h2>Alunos</h2>
+            
+            <a href="/alunos/novo" class="btn btn-primary">Novo</a>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>Ano de Matrícula</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% alunos.forEach(aluno => { %>
+                    <tr>
+                        <td><%= aluno.nome %> </td>
+                        <td><%= aluno.sobrenome %> </td>
+                        <td><%= aluno.ano_matricula %> </td>
+                        <td>
+                            <a href="/alunos/<%= aluno.id %>" class="btn btn-default"> editar</a>
+                        </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class = "professores">
+            <h2>Professor</h2>
+
+            <table class="table" >
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Sobrenome</th>
+                        <th>N Turmas</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <% professores.forEach(professor=> { %>
+                    <tr>
+                        <td><%= professor.nome %> </td>
+                        <td><%= professor.sobrenome %> </td>
+                        <td><%= professor.turmas.length %> </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+        <div class= "cursos">
+            <h2>Cursos</h2>
+
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Area</th>
+                        <th>Turmas</th>
+                    </tr>
+
+                </thead>
+                <tbody>
+                    <% cursos.forEach(curso=> { %>
+                    <tr>
+                        <td><%= curso.nome %> </td>
+                        <td><%= curso.area.tipo %> </td>
+                        <td><%= curso.turmas.length %> </td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
